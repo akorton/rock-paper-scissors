@@ -34,13 +34,30 @@ const updateScores = (playerChoice)=>{
     if (roundResult.includes("You win?")) playerScore++;
     let computerScoreParagraph = document.querySelector(".computer p");
     let playerScoreParagraph = document.querySelector(".player p");
-    console.log(computerScore)
-    console.log(playerScore)
     computerScoreParagraph.innerText = computerScore;
     playerScoreParagraph.innerText = playerScore;
+    if (computerScore == 5 || playerScore == 5) {
+        rockButton.setAttribute('disabled', 'disabled');
+        paperButton.setAttribute('disabled', 'disabled');
+        scissorsButton.setAttribute('disabled', 'disabled');
+        let crownImage;
+        if (playerScore == 5) crownImage = document.querySelector('.player .crown');
+        if (computerScore == 5) crownImage = document.querySelector('.computer .crown');
+        crownImage.style.visibility = 'visible';
+    }
 }
 
 const rockButton = document.querySelector(".rock");
-rockButton.addEventListener((e)=>{
+rockButton.addEventListener('click', (e)=>{
     updateScores("rock");
+})
+
+const paperButton = document.querySelector(".paper");
+paperButton.addEventListener('click', (e)=>{
+    updateScores("paper");
+})
+
+const scissorsButton = document.querySelector(".scissors");
+scissorsButton.addEventListener('click', (e)=>{
+    updateScores("scissors");
 })
