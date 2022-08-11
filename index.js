@@ -10,17 +10,6 @@ const toCamelCase = (str) =>{
     return ans;
 }
 
-const getVerifiedInput = () => {
-    const possibleInputs = ["paper", "rock", "scissors"];
-    const inputMessage = "Please chose your fighter: ";
-    let input;
-    input = prompt(inputMessage).toLowerCase();
-    while (!possibleInputs.includes(input)) {
-        input = prompt(inputMessage).toLowerCase();
-    }
-    return input;
-}
-
 const playOneRound = (playerChoice)=>{
     const computerChoice = getComputerChoice();
     const possibilities = ["paper", "rock", "scissors"];
@@ -36,18 +25,22 @@ const playOneRound = (playerChoice)=>{
     return computerIndex < playerIndex ? computerWinMessage : playerWinMessage; 
 }
 
-const playBestOfNine = () => {
-    let computerScore = 0;
-    let playerScore = 0;
-    while (computerScore < 5 && playerScore < 5){
-        let playerChoice = getVerifiedInput();
-        let roundResult = playOneRound(playerChoice);
-        console.log(roundResult);
-        if (roundResult.includes("Computer wins!")) computerScore++;
-        if (roundResult.includes("Impossible...")) playerScore++;
-        console.log(`Computer score: ${computerScore}`);
-        console.log(`Player score: ${playerScore}`);
-    }
+let computerScore = 0;
+let playerScore = 0;
+
+const updateScores = (playerChoice)=>{
+    const roundResult = playOneRound(playerChoice);
+    if (roundResult.includes("Computer wins!")) computerScore++;
+    if (roundResult.includes("You win?")) playerScore++;
+    let computerScoreParagraph = document.querySelector(".computer p");
+    let playerScoreParagraph = document.querySelector(".player p");
+    console.log(computerScore)
+    console.log(playerScore)
+    computerScoreParagraph.innerText = computerScore;
+    playerScoreParagraph.innerText = playerScore;
 }
 
-playBestOfNine();
+const rockButton = document.querySelector(".rock");
+rockButton.addEventListener((e)=>{
+    updateScores("rock");
+})

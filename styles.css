@@ -1,0 +1,79 @@
+body {
+    background-color:papayawhip;
+    padding: 50px;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    font-size: 36px;
+    font-family: sans-serif;
+    font-weight: 900;
+    color:teal;
+    margin-bottom: 300px;
+}
+
+.game {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.game .choices {   
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+}
+
+.game .scores {
+    display: flex;
+    justify-content: center;
+    gap: 150px;
+    margin-bottom: 20px;
+}
+
+.game .scores .player,
+.game .scores .computer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.game .scores img {
+    height: 250px;
+    width: 300px;
+}
+
+.game .scores p {
+    font-size: 25px;
+}
+
+.game .choices button {
+    font-size: 40px;
+    border-radius: 10px;
+    border-color: papayawhip;
+    padding: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.game .choices .rock {
+    color: black;
+    background-color: gray;
+}
+
+.game .choices .paper {
+    color: grey;
+    background-color: white;
+}
+
+.game .choices .scissors {
+    color: darkblue;
+    background-color: slategray;
+}
+
+.game .scores .crown {
+    height: 150px;
+    width: 200px;
+    display: none;
+}
