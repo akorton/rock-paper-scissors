@@ -92,4 +92,6 @@ playAgainButton.addEventListener('click', (e)=>{
     choiceButtons.forEach((btn)=>{
         btn.disabled = false;
     });
+    let commentParagraph = document.querySelector(".comments p");
+    commentParagraph.innerText = 'New game started!';
 })
